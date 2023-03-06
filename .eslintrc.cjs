@@ -18,6 +18,9 @@ module.exports = {
         extensions: [".js", ".jsx", ".ts", ".tsx"],
       },
     },
+    typescript: {
+      alwaysTryTypes: true, // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
+    },
   },
   env: {
     browser: true,
@@ -32,7 +35,7 @@ module.exports = {
     "plugin:jsx-a11y/recommended",
     "plugin:prettier/recommended", // Make sure this is always the last element in the array.
   ],
-  plugins: ["simple-import-sort", "prettier"],
+  plugins: ["simple-import-sort", "prettier", "import"],
   rules: {
     "arrow-body-style": ["error", "as-needed"],
     "prettier/prettier": ["error", {}, { usePrettierrc: true }],
@@ -52,5 +55,6 @@ module.exports = {
         aspects: ["invalidHref", "preferButton"],
       },
     ],
+    "import/no-unresolved": "error",
   },
 };
